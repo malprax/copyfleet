@@ -1,0 +1,12 @@
+<a href="/notifications" class="dropdown-toggle" >
+<%# if current_user && current_user.mailbox.notifications.unread.length > 0 %>
+  <span class="badge badge-important">
+    <%#= current_user.mailbox.notifications.unread.length%>
+  </span>
+<%# else %>
+  <i class="icon-envelope"></i>
+<%# end %>
+	<span>
+    Notifications
+  </span>
+</a>

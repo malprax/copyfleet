@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subdomain:</strong>
+  <%= @account.subdomain %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @account.company %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @account.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @account.email %>
+</p>
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>

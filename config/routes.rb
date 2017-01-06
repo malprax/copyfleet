@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :accounts
+  devise_for :users
   get '/dashboard', :to => "home#dashboard", :as => :dashboard
   get '/upcoming_washes', :to => "home#upcoming_washes", :as => :upcoming_washes
 
