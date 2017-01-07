@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
 
   resources :accounts
-  devise_for :users
+
+  devise_for :users, :path_prefix => 'my'
+  resources :users
+  devise_scope :user do
+    get '/logout' => "devise/sessions#destroy"
+    get '/login' => "devise/sessions#new"
+    get '/sign_up' => "accounts#new"
+    get '/profile' => "devise/registrations#edit"
+  end
+
   get '/dashboard', :to => "home#dashboard", :as => :dashboard
   get '/upcoming_washes', :to => "home#upcoming_washes", :as => :upcoming_washes
 
