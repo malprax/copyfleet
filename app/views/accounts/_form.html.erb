@@ -1,14 +1,23 @@
-<%= simple_form_for(@account) do |f| %>
+<%= simple_form_for @account, html: {class: "form-vertical"}, remote: false do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :subdomain, label: "Site URL" %>
-    <%= f.input :company %>
-    <%= f.input :phone %>
-    <%= f.input :email %>
+    <%= f.input :company, required: false, :input_html => {placeholder: "Company Name"}, label: false %>
+
+    <%= f.simple_fields_for :users do |u| %>
+        <%= u.input :email, required: true, :input_html => {placeholder: "Your Email Address"}, label: false %>
+        <%= u.input :password, required: true, :input_html => {placeholder: "Your Password"}, label: false %>
+        <%= u.input :password_confirmation, required: true, :input_html => {placeholder: "Confirm Your Password"}, label: false %>
+    <% end %>
+    <%= f.input :subdomain, label: "Site URL", required: false, wrapper: :append do |n| %>
+        <%= f.input_field :subdomain %>
+        <%= content_tag :span, ".#{SITE_URL}", class: "add-on" %>
+    <% end %>
+
+
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Create Account", class: 'btn-primary' %>
   </div>
 <% end %>
