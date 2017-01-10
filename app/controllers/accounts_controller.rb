@@ -13,7 +13,9 @@ class AccountsController < ApplicationController
   end
 
   def new
+    sign_out(current_user) if current_user
     @account = Account.new
+    @account.users.build(role: "admin")
     respond_with(@account)
   end
 

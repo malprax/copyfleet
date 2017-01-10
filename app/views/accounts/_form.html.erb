@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :company, required: false, :input_html => {placeholder: "Company Name"}, label: false %>
+    <%= f.input :company, required: true, :input_html => {placeholder: "Company Name"}, label: false %>
 
     <%= f.simple_fields_for :users do |u| %>
         <%= u.input :email, required: true, :input_html => {placeholder: "Your Email Address"}, label: false %>
@@ -19,5 +19,6 @@
 
   <div class="form-actions">
     <%= f.button :submit, "Create Account", class: 'btn-primary' %>
+    <%= link_to "Cancel Account", root_path, class: 'btn' %>
   </div>
 <% end %>

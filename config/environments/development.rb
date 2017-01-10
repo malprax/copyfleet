@@ -26,6 +26,18 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  SITE_URL = "copyfleet.dev"
+
+  config.action_mailer.default_url_options = { :host => SITE_URL, :only_path => false }
+  # Log the query plan for queries taking more than this (works
+  # with SQLite, MySQL, and PostgreSQL)
+  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.action_mailer.smtp_settings = {
+    :address        => 'localhost',
+    :port           => '1025'
+  }
+  config.action_mailer.delivery_method = :smtp
+
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
